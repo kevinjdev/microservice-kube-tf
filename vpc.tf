@@ -71,7 +71,7 @@ resource "aws_route_table_association" "public_subnet_b_association" {
 }
 
 resource "aws_eip" "nat_eip" {
-  domain = vpc
+  domain = "vpc"
 
   tags = var.required_tags
 }
