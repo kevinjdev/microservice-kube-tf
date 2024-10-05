@@ -14,7 +14,7 @@ env:
   TF_VARS_FILE: 'dev.tfvars'
 
 jobs:
-  terraform:
+  terraform-deploy:
     runs-on: ubuntu-latest
 
     steps:
