@@ -34,11 +34,11 @@ jobs:
       - name: Terraform Format Check
         run: terraform fmt -check
 
-      - name: Terraform Workspace
-        run: terraform workspace select -or-create=true ${{ env.WORKSPACE }}
-
       - name: Terraform Init
         run: terraform init
+
+      - name: Terraform Workspace
+        run: terraform workspace select -or-create=true ${{ env.WORKSPACE }}
 
       - name: Terraform Validate
         run: terraform validate
