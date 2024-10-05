@@ -1,10 +1,10 @@
 terraform {
   backend "s3" {
-    bucket         = aws_s3_bucket.terraform_state.name
-    key            = "/tf/${terraform.workspace}/terraform.tfstate"
-    region         = var.aws_region
+    bucket         = "microservice-kube-tf-state-469136862772-us-east-2"
+    key            = "terraform-state/${terraform.workspace}/terraform.tfstate"
+    region         = "us-east-2"
     encrypt        = true
-    dynamodb_table = aws_dynamodb_table.terraform_locks.name
+    dynamodb_table = "teraform-lock-table"
   }
   required_providers {
     aws = {
