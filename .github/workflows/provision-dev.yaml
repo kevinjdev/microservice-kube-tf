@@ -35,7 +35,7 @@ jobs:
         run: terraform fmt -check
 
       - name: Terraform Workspace
-        run: terraform workspace select ${{ env.WORKSPACE }} -or-create=true
+        run: terraform -or-create=true workspace select ${{ env.WORKSPACE }}
 
       - name: Terraform Init
         run: terraform init
