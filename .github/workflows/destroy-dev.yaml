@@ -6,6 +6,7 @@ on:
 env:
   AWS_REGION: 'us-east-2'
   WORKSPACE: 'dev'
+  TF_VARS_FILE: 'dev.tfvars'
 
 jobs:
   terraform-deploy:
@@ -31,6 +32,6 @@ jobs:
       - name: Terraform Workspace
         run: terraform workspace select -or-create=true ${{ env.WORKSPACE }}
 
-      - name: Terraform Apply
+      - name: Terraform Destroy
         if: github.ref == 'refs/heads/main'
-        run: terraform apply -destroy -auto-approve
+        run: terraform apply -destroy -auto-approve -var-file=${{ env.TF_VARS_FILE}}
