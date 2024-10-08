@@ -5,6 +5,9 @@ module "eks" {
   vpc_id          = aws_vpc.vpc.id
   subnet_ids      = [aws_subnet.private_subnet_a.id, aws_subnet.private_subnet_b.id]
 
+  enable_cluster_creator_admin_permissions = true
+  cluster_endpoint_public_access           = true
+
   fargate_profiles = {
     fargate-default = {
       name = var.fargate_profile_name
@@ -15,8 +18,6 @@ module "eks" {
       ]
     }
   }
-
-  enable_cluster_creator_admin_permissions = true
 
   tags = var.required_tags
 }
