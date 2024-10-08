@@ -3,7 +3,7 @@ module "eks" {
   cluster_name    = var.cluster_name
   cluster_version = "1.30"
   vpc_id          = aws_vpc.vpc.id
-  subnet_ids      = [aws_subnet.private_subnet_a, aws_subnet.private_subnet_b]
+  subnet_ids      = [aws_subnet.private_subnet_a.id, aws_subnet.private_subnet_b.id]
 
   fargate_profiles = {
     fargate-default = {
