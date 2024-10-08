@@ -5,3 +5,7 @@ required_tags = {
   "DeployedBy"  = "Terraform"
   "Environment" = "Dev"
 }
+
+cluster_name         = "dev-microservice-kube"
+fargate_profile_name = "eks-fargate-profile"
+namespace            = "default"

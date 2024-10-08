@@ -1,11 +1,18 @@
 module "eks" {
   source          = "terraform-aws-modules/eks/aws"
-  cluster_name    = "microservice-eks-fargate-cluster"
-  subnets         = [aws_subnet.private_subnet_a.name, aws_subnet.private_subnet_b.name]
+  cluster_name    = var.cluster_name
+  cluster_version = "1.30"
   vpc_id          = aws_vpc.vpc.id
-  cluster_version = "1.31"
-  fargate_profile = {
-    eks_cluster_name = "microservice-eks-fargate-cluster"
-    subnets          = [aws_subnet.private_subnet_a.name, aws_subnet.private_subnet_b.name]
+  subnet_ids      = [aws_subnet.private_subnet_a, aws_subnet.private_subnet_b]
+
+  fargate_profiles = {
+    fargate-default = {
+      name = var.fargate_profile_name
+      selectors = [
+        {
+          namespace = var.namespace
+        }
+      ]
+    }
   }
 }
