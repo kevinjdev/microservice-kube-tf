@@ -49,4 +49,4 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main'
-        run: terraform apply -auto-approve -var-file=${{ env.TF_VARS_FILE}} tfplan
+        run: terraform apply -auto-approve tfplan
