@@ -8,7 +8,17 @@ variable "required_tags" {
   type        = map(string)
 }
 
-variable "tf_bucket_name" {
-  description = "Bucket name to store tf state"
+variable "cluster_name" {
+  description = "EKS Cluster Name"
   type        = string
 }
+
+variable "fargate_profile_name" {
+  description = "Fargate profile name"
+  type        = string
+}
+
+variable "namespace" {
+  description = "Fargate profile namespace"
+}
+

@@ -48,7 +48,7 @@ resource "aws_route_table" "public_route_table" {
   vpc_id = aws_vpc.vpc.id
 
   route {
-    cidr_block = aws_vpc.main_vpc.cidr_block
+    cidr_block = aws_vpc.vpc.cidr_block
     gateway_id = "local"
   }
 
@@ -71,7 +71,9 @@ resource "aws_route_table_association" "public_subnet_b_association" {
 }
 
 resource "aws_eip" "nat_eip" {
-  domain = vpc
+  domain = "vpc"
+
+  tags = var.required_tags
 }
 
 resource "aws_nat_gateway" "nat_gateway" {
@@ -85,7 +87,7 @@ resource "aws_route_table" "private_route_table" {
   vpc_id = aws_vpc.vpc.id
 
   route {
-    cidr_block = aws_vpc.main_vpc.cidr_block
+    cidr_block = aws_vpc.vpc.cidr_block
     gateway_id = "local"
   }
 
