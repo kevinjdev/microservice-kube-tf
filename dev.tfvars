@@ -7,5 +7,5 @@ required_tags = {
 }
 
 cluster_name         = "dev-microservice-kube"
-fargate_profile_name = "eks-fargate-profile"
+fargate_profile_name = "dev-microservice-kube-fargate-profile"
 namespace            = "default"
