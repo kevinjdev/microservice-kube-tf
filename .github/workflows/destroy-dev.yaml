@@ -30,7 +30,7 @@ jobs:
         run: terraform init
 
       - name: Terraform Workspace
-        run: terraform workspace select -or-create=true ${{ env.WORKSPACE }}
+        run: terraform workspace select -or-create=true ${{ env.WORKSPACE }} -input=false
 
       - name: Terraform Destroy
-        run: terraform apply -destroy -auto-approve -var-file=${{ env.TF_VARS_FILE}}
+        run: terraform apply -destroy -auto-approve -var-file=${{ env.TF_VARS_FILE}} -input=false
